@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+
+class Time {
+    int hours;
+    int minutes;
+
+public:
+    Time(int h = 0, int m = 0) {
+        hours = h;
+        minutes = m;
+    }
+
+    // Overload + operator to add two Time objects
+    Time operator + (const Time &t) {
+        Time temp;
+        temp.minutes = minutes + t.minutes;
+        temp.hours = hours + t.hours + temp.minutes / 60;
+        temp.minutes = temp.minutes % 60;
+        return temp;
+    }
+
+    void display() {
+        cout << hours << " hours and " << minutes << " minutes" << endl;
+    }
+};
+
+int main() {
+    Time t1(2, 45);  // 2 hours 45 minutes
+    Time t2(1, 30);  // 1 hour 30 minutes
+
+    Time t3 = t1 + t2;  // Calls overloaded + operator
+
+    cout << "Time 1: ";
+    t1.display();
+
+    cout << "Time 2: ";
+    t2.display();
+
+    cout << "Sum of Times: ";
+    t3.display();
+
+    return 0;
+}
+
+Time 1: 2 hours and 45 minutes
+Time 2: 1 hours and 30 minutes
+Sum of Times: 4 hours and 15 minutes
