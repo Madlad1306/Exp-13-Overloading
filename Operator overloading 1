@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+
+class Distance {
+    int meters;
+    int centimeters;
+
+public:
+    Distance(int m = 0, int cm = 0) {
+        meters = m;
+        centimeters = cm;
+    }
+
+    // Overload + operator to add two distances
+    Distance operator + (const Distance &d) {
+        Distance temp;
+        temp.centimeters = centimeters + d.centimeters;
+        temp.meters = meters + d.meters + temp.centimeters / 100;
+        temp.centimeters = temp.centimeters % 100;
+        return temp;
+    }
+
+    void display() {
+        cout << meters << " meters and " << centimeters << " centimeters" << endl;
+    }
+};
+
+int main() {
+    Distance d1(3, 75);  // 3 meters 75 cm
+    Distance d2(2, 50);  // 2 meters 50 cm
+
+    Distance d3 = d1 + d2;  // Calls overloaded + operator
+
+    cout << "Distance 1: ";
+    d1.display();
+
+    cout << "Distance 2: ";
+    d2.display();
+
+    cout << "Sum of Distances: ";
+    d3.display();
+
+    return 0;
+}
+
+Distance 1: 3 meters and 75 centimeters
+Distance 2: 2 meters and 50 centimeters
+Sum of Distances: 6 meters and 25 centimeters
