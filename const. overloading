@@ -1,0 +1,73 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class BankAccount {
+    string accountHolder;
+    int accountNumber;
+    double balance;
+
+public:
+    // Default constructor
+    BankAccount() {
+        accountHolder = "Unknown";
+        accountNumber = 0;
+        balance = 0.0;
+        cout << "Default constructor called: Account created with zero balance" << endl;
+    }
+
+    // Constructor with 1 parameter (account holder name)
+    BankAccount(string name) {
+        accountHolder = name;
+        accountNumber = 0;
+        balance = 0.0;
+        cout << "Constructor with 1 parameter called: Account for " << name << " with zero balance" << endl;
+    }
+
+    // Constructor with 3 parameters (name, account number, balance)
+    BankAccount(string name, int accNo, double bal) {
+        accountHolder = name;
+        accountNumber = accNo;
+        balance = bal;
+        cout << "Constructor with 3 parameters called: Account " << accNo << " for " << name 
+             << " with balance " << bal << endl;
+    }
+
+    void display() {
+        cout << "Account Holder: " << accountHolder << endl;
+        cout << "Account Number: " << accountNumber << endl;
+        cout << "Balance: $" << balance << endl;
+        cout << "-------------------------" << endl;
+    }
+};
+
+int main() {
+    BankAccount a1;                     // Default constructor
+    BankAccount a2("Alice");            // 1-parameter constructor
+    BankAccount a3("Bob", 101, 5000);   // 3-parameter constructor
+
+    cout << "\nAccount Details:\n";
+    a1.display();
+    a2.display();
+    a3.display();
+
+    return 0;
+}
+
+Default constructor called: Account created with zero balance
+Constructor with 1 parameter called: Account for Alice with zero balance
+Constructor with 3 parameters called: Account 101 for Bob with balance 5000
+
+Account Details:
+Account Holder: Unknown
+Account Number: 0
+Balance: $0
+-------------------------
+Account Holder: Alice
+Account Number: 0
+Balance: $0
+-------------------------
+Account Holder: Bob
+Account Number: 101
+Balance: $5000
+-------------------------
